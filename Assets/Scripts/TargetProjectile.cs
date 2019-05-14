@@ -34,7 +34,7 @@ public class TargetProjectile : MonoBehaviour
         while (Lerp < 1)
         {
             Debug.Log("Do Target");
-            Lerp += Speed * Time.deltaTime;
+            Lerp += (1f/Speed) * Time.deltaTime;
             Vector3 pos = Vector3.Lerp(origin, target.position, lerpSmoothing.Evaluate(Lerp));
             pos += Vector3.up * yOffset.Evaluate(Lerp);
             transform.position = pos;
@@ -57,12 +57,13 @@ public class TargetProjectile : MonoBehaviour
         while (Lerp > 0)
         {
             Debug.Log("Do Target");
-            Lerp -= Speed * Time.deltaTime;
+            Lerp -= (1f/Speed) * Time.deltaTime;
             Vector3 pos = Vector3.Lerp(origin, target.position, lerpSmoothing.Evaluate(Lerp));
             pos += Vector3.up * yOffset.Evaluate(Lerp);
             transform.position = pos;
             yield return new WaitForEndOfFrame();
         }
+        
         TravelSoundEffect.Stop();
     }
 
