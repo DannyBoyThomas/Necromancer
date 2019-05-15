@@ -8,6 +8,7 @@ public enum DamageType { Blunt, Fire, Acid };
 public static class DamageSystem 
 {
     static GameObject prefab = null;
+    public delegate void OnTemporalDamageComplete(Entity entity);
     public static bool DealDamage(this Entity attacker, Entity entity, int val, DamageType dType = DamageType.Blunt)
     { 
         float modifier = entity.damageModifier;
@@ -18,12 +19,12 @@ public static class DamageSystem
         int damage = EnumArrayContains(dType, entity.immunity) ? 0 : tempDamage;
         //Debug.Log("weakness: " + weaknessMod + ", resistance: " + resistanceMod);
         //Debug.Log(val);
-        bool didDamage = entity.OnTakeDamage(attacker, val, damage, dType);
-        if(didDamage)
+       int didDamage = entity.OnTakeDamage(attacker, val, damage, dType);
+        if(didDamage>0)
         {
-            DisplayDamageInstance(entity, damage, dType);
+            DisplayDamageInstance(entity, didDamage, dType);
         }
-        return didDamage;
+        return didDamage>0;
     }
     public static void DealDamageMultiple(this Entity attacker,List<Entity> entities, int val, DamageType dType)
     {
@@ -31,6 +32,12 @@ public static class DamageSystem
         {
             attacker.DealDamage(entities[i], val, dType);
         }
+    }
+    //Deal incremental damage over time
+    public static void DealDamageTemporal(this Entity attacker, Entity entity, int damageTotal, int damageInterval, float timeInterval, DamageType dType, OnTemporalDamageComplete callback = null )
+    {
+        TemporalDamage td = entity.gameObject.AddComponent<TemporalDamage>();
+        td.Setup(attacker, damageTotal, damageInterval, timeInterval, dType, callback);
     }
     //Check if a damage type exists within a List<DamageType>
     //Its an enum so is actually in bits rather than an actual list
@@ -80,5 +87,7 @@ public static class DamageSystem
         {
             prefab = (GameObject)Resources.Load("Prefabs/Popup Text Parent");
         }
+       
     }
+    
 }

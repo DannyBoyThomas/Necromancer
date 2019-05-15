@@ -7,10 +7,12 @@ public class Necromancer : MonoBehaviour
     TargetSystem targetSystem;
     List<GameObject> targets;
     BloodPool pool;
+    Entity entity;
     void Start()
     {
         targetSystem = GetComponent<TargetSystem>();
         pool = GetComponent<BloodPool>();
+        entity = GetComponent<Entity>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class Necromancer : MonoBehaviour
             {
                 //GiveEssence();
                 //GetComponent<Entity>().DealDamage(targets[0].GetComponent<EntityNPC>(), 30, DamageType.Blunt);
+                entity.DealDamageTemporal(targets[0].GetComponent<EntityNPC>(), 50, 5, 0.3f, DamageType.Acid);
             }
         }
     }

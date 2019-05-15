@@ -54,9 +54,15 @@ public class EntityNPC : Entity
         Color c = Color.Lerp(Color.grey, Color.red, p);
         GetComponent<Renderer>().material.color = c;
     }
-    public override bool OnTakeDamage(Entity attacker, int initialDamage, int damage, DamageType dType)
+    public override int OnTakeDamage(Entity attacker, int initialDamage, int damage, DamageType dType)
     {
-        essence -= damage;
-        return true; //if accepting damage
+        int damageDone = damage > Essence ? Essence : damage;
+        Essence = Mathf.Clamp(Essence - damage, 0, maxEssence);
+        if(Essence<=0)
+        {
+            DieAsync();
+        }
+        return damageDone; //if accepting damage
     }
+    
 }
