@@ -4,54 +4,31 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    public int maxEssence = 10;
-    public int startEssence = 10;
-    private int essence = 10;
    
-    void Start()
+
+    [EnumFlagsAttribute]
+    public DamageType immunity;
+    [EnumFlagsAttribute]
+    public DamageType resistance;
+    [EnumFlagsAttribute]
+    public DamageType weakness;
+    // Value used to adjust damage from; weakness,resistance
+    public float damageModifier = .5f;
+
+    public virtual void Start()
     {
-        Essence = startEssence;
+        
     }
-    void Update()
+   public virtual void Update()
     {
-        ShowColor();
+       
     }
 
-    public int Essence
+   
+    public virtual bool OnTakeDamage(Entity attacker, int initialDamage, int damage, DamageType dType)
     {
-        get { return essence; }
-        set { essence = value; }
-    }
-    [ContextMenu("Extract")]
-    public void ex()
-    {
-        ExtractEssence(5);
-    }
-    [ContextMenu("Give")]
-    public void give()
-    {
-        GiveEssence(5);
-    }
-    public int ExtractEssence(int amount)
-    {
-        int temp = amount > Essence ? Essence : amount;
-        Essence = Mathf.Clamp(Essence-amount,0, maxEssence);
-        return temp;
-    }
-  
-    public int GiveEssence(int amount)
-    {
-        int space = maxEssence - Essence;
-        Essence = Mathf.Clamp(Essence + amount,0, maxEssence);
-
-        return space > amount ? amount : space;
-
-    }
-    void ShowColor()
-    {
-        float p = Essence / (float)maxEssence ;
-        Color c = Color.Lerp(Color.grey, Color.red, p);
-        GetComponent<Renderer>().material.color = c;
+       
+        return true; //if accepting damage
     }
 
 }

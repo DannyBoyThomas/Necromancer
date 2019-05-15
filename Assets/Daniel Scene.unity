@@ -332,9 +332,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 699133726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffcacb430ff00d0438044d2fbc3b8309, type: 3}
+  m_Script: {fileID: 11500000, guid: 88e26955bd53a3f49b51230817ccdb7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  immunity: 0
+  resistance: 0
+  weakness: 0
+  damageModifier: 0.5
   maxEssence: 10
   startEssence: 10
 --- !u!65 &699133728
@@ -438,9 +442,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 741243856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffcacb430ff00d0438044d2fbc3b8309, type: 3}
+  m_Script: {fileID: 11500000, guid: 88e26955bd53a3f49b51230817ccdb7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  immunity: 0
+  resistance: 0
+  weakness: 0
+  damageModifier: 0.5
   maxEssence: 10
   startEssence: 10
 --- !u!65 &741243858
@@ -635,11 +643,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1353062047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffcacb430ff00d0438044d2fbc3b8309, type: 3}
+  m_Script: {fileID: 11500000, guid: 88e26955bd53a3f49b51230817ccdb7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEssence: 100
-  startEssence: 50
+  immunity: 0
+  resistance: 0
+  weakness: 0
+  damageModifier: 0.5
+  maxEssence: 10
+  startEssence: 10
 --- !u!65 &1353062049
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -727,6 +739,7 @@ GameObject:
   - component: {fileID: 1522225374}
   - component: {fileID: 1522225373}
   - component: {fileID: 1522225375}
+  - component: {fileID: 1522225376}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -845,6 +858,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoints: 10
   maxPoints: 100
+--- !u!114 &1522225376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522225368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcacb430ff00d0438044d2fbc3b8309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immunity: 0
+  resistance: 0
+  weakness: 0
+  damageModifier: 0.5
 --- !u!1 &1694886682
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,11 +903,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1694886682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffcacb430ff00d0438044d2fbc3b8309, type: 3}
+  m_Script: {fileID: 11500000, guid: 88e26955bd53a3f49b51230817ccdb7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  immunity: 0
+  resistance: 0
+  weakness: 0
+  damageModifier: 0.5
   maxEssence: 10
-  startEssence: 0
+  startEssence: 10
 --- !u!65 &1694886684
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1083,9 +1116,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1958306381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffcacb430ff00d0438044d2fbc3b8309, type: 3}
+  m_Script: {fileID: 11500000, guid: 88e26955bd53a3f49b51230817ccdb7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  immunity: 0
+  resistance: 0
+  weakness: 0
+  damageModifier: 0.5
   maxEssence: 10
   startEssence: 10
 --- !u!65 &1958306383

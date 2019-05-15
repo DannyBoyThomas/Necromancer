@@ -30,13 +30,14 @@ public class Necromancer : MonoBehaviour
             GetTargets(1);
             if (Input.GetMouseButtonDown(1))
             {
-                GiveEssence();
+                //GiveEssence();
+                //GetComponent<Entity>().DealDamage(targets[0].GetComponent<EntityNPC>(), 30, DamageType.Blunt);
             }
         }
     }
     void GetTargets(int amount)
     {
-        targets = targetSystem.GetTargets(amount);
+        targets = targetSystem.GetTargets<EntityNPC>(amount);
     }
     
     void ExtractEssence()
@@ -44,7 +45,7 @@ public class Necromancer : MonoBehaviour
        
         foreach(GameObject g in targets)
         {
-            Entity entity  = g.GetComponent<Entity>();
+            EntityNPC entity  = g.GetComponent<EntityNPC>();
             if (entity != null)
             {
                 pool.AbsorbPoints(entity.ExtractEssence(5));
@@ -55,7 +56,7 @@ public class Necromancer : MonoBehaviour
     {
         foreach (GameObject g in targets)
         {
-            Entity entity = g.GetComponent<Entity>();
+            EntityNPC entity = g.GetComponent<EntityNPC>();
             if (entity != null)
             {
                 entity.GiveEssence(pool.UsePoints(5));

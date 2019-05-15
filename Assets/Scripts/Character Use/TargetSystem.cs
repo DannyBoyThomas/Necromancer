@@ -18,7 +18,7 @@ public class TargetSystem : MonoBehaviour
     {
         
     }
-    public List<GameObject> GetTargets(int amount)
+    public List<GameObject> GetTargets<T>(int amount) where T: Component
     {
        listInfo = new List<TargetInfo>();
         float maxAngle =30;
@@ -27,7 +27,7 @@ public class TargetSystem : MonoBehaviour
         for(int i=0; i<cols.Length; i++)
         {
             GameObject g = cols[i].gameObject;
-            if(g.GetComponent<Entity>())
+            if(g.GetComponent<T>())
             {
                 Vector3 dir = (g.transform.position-transform.position).normalized;
                 float dot = Vector3.Dot(dir, transform.forward);
